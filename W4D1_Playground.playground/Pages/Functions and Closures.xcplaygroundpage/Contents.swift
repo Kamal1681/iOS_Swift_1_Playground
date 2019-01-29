@@ -42,23 +42,54 @@ func sayHello(toPerson: String) -> String{
  - Experiment:
  Try calling all of the functions above. They all have the same function name, but the compiler doesn't complain. Can you think of why this might be?
  */
-
+sayHello()
+//sayHello(toPerson: "Bob")
+//sayHello(toPerson: "Bob")
 /*:
  - Experiment:
  Try creating your own function that accepts two parameters of any type you choose. Have the function print out the two parameters and test your function.
  */
+func printTwo (firstArgument: String, secondArgument: String) {
+    print ("\(firstArgument) \(secondArgument)")
+}
+printTwo(firstArgument: "hello", secondArgument: "world")
 
 /*:
  - Callout(Challenge):
  Create four separate functions to add, subtract, multiple, and divide with two parameters given to it and returns a number result. Try testing each one afterwards.
  
  */
+func add (firstArgument: Double, secondArgument: Double) -> Double {
+    return firstArgument + secondArgument
+}
+add(firstArgument: 1, secondArgument: 33)
 
+func sub (firstArgument: Double, secondArgument: Double) -> Double {
+    return firstArgument - secondArgument
+}
+sub(firstArgument: 1, secondArgument: 33)
+
+func mul (firstArgument: Double, secondArgument: Double) -> Double {
+    return firstArgument * secondArgument
+}
+mul(firstArgument: 1, secondArgument: 33)
+
+func div (firstArgument: Double, secondArgument: Double) -> Double {
+    return firstArgument / secondArgument
+}
+div(firstArgument: 1, secondArgument: 33)
 /*:
  - Callout(Challenge):
  Create your own 'reverse' function that takes in an array of Int, reverses the order of the array, and returns the newly reversed array of Int. The array class has its own 'reverse' method, but do not use it for this challenge.
  */
-
+func reverseArray (myArray: [Int]) -> [Int] {
+    var myReveresedArray : [Int] = []
+    for i in 0..<myArray.count {
+        myReveresedArray.append(myArray[myArray.count - 1 - i])
+    }
+    return myReveresedArray
+}
+reverseArray(myArray: [2,2,6,4,5])
 /*:
  ## Closures
  
@@ -98,7 +129,7 @@ var sayHelloClosure = { () -> () in
  - Close braces
  */
 var sayHelloClosureToPerson = { (name: String) -> () in
-    print("Hello \(name)")
+    print("hello \(name)")
 }
 /*:
  - Callout(Structure): This is storing a closure into a variable called 'sayHelloClosureWithReturn'.
@@ -117,11 +148,22 @@ var sayHelloClosureWithReturn = { (name: String) -> String in
  - Experiment:
  Try calling all of the closures above. What do you notice that is different from calling a function?
  */
+sayHelloClosure()
+
+//sayHelloClosureToPerson("Bob")
+
+sayHelloClosureWithReturn("Bob")
+
 
 /*:
  - Experiment:
  Try creating your own closure that accepts two parameters of any type you choose. Have the closure print out the two parameters and test your closure.
  */
+var aClosure = { (firstInt: Int, secondInt: Int) -> () in
+    print(firstInt, secondInt)
+}
+aClosure(3, 5)
+
 
 /*:
  - Experiment:
@@ -133,3 +175,14 @@ var sayHelloClosureWithReturn = { (name: String) -> String in
  Create a closure with at least two parameters of your choice and decide whether or not it returns anything. Then create a function that takes in your closure as a parameter and one additional parameter of your choice.
  */
 //: [Next](@next)
+var oneClosure = { (integerOne: Int, integerTwo: Int) -> Int in
+    return integerOne * integerTwo
+}
+
+func usingClosure( aBoolean: Bool, closure: (Int, Int) -> Int) {
+    if aBoolean {
+        print(closure(4, 2))
+    }
+}
+
+usingClosure(aBoolean: true, closure: oneClosure)

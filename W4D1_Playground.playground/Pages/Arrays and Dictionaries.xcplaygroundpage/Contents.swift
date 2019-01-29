@@ -19,19 +19,30 @@ myDictionary["Principal"] = 1
  - Experiment:
  Try creating an array and dictionary using `'let'` vs `'var'` then try adding something to them. What do you notice? For the array, you can use a method called 'append' to add something to it.
  */
+var myArray = ["a", "b", "c" ,"d"]
+var myDict = ["a" : 1, "b" : 2, "c" : 3]
+myArray.append("e")
+
+print("The value at index 1 is: \(myArray[4])")
+myDict["d"] = 4
+
+print("The value at d is: \(myDict["d"] ?? 16)")
+
 
 
 /*:
  - Experiment:
  Try creating an empty array with an explicit type `[type]`. What happens when you add a value that isn't the same type?
  */
+var myArray2: [Int] = []
+myArray2.append(11)
 
 
 /*:
  - Experiment:
  Try creating an empty dictionary with an explicit type. `[keyType: valueType]`
  */
-
+var myDict2: [String: Int] = [:]
 
 /*:
  - Experiment:
@@ -43,7 +54,15 @@ myDictionary["Principal"] = 1
  - reverse
  - count
  */
-
+myArray2 = [12, 25, 72, 13]
+myArray2.append(191)
+myArray2.insert(20, at: 1)
+myArray2.remove(at: 3)
+//myArray2.removeAll()
+myArray2.count
+print("\(myArray2)")
+myArray2.reverse()
+myArray2.removeAll()
 
 /*:
  - Experiment:
@@ -52,14 +71,12 @@ myDictionary["Principal"] = 1
  - isEmpty
  - count
  */
+myDict2 = ["a" : 1, "b" : 2, "c" : 3]
+myDict2.count
+myDict2.isEmpty
+myDict2.removeValue(forKey: "c")
+print("\(myDict2)")
 
-
-/*:
- - Callout(Challenge):
-    Declare a mutable array that is empty and holds `Strings`. On the next few lines, add the following names to the array: John, Karen, Jane
- 
-    Finally, print out each person's name from the array using their index and string interpolation
-*/
 
 
 /*:
@@ -74,6 +91,9 @@ myDictionary["Principal"] = 1
  
     On the next line, add this last person's info: Bob - $45000
  */
+var salaryDict: [String:Int] = ["John" : 50000, "Jane" : 70000, "Karen" : 62000]
+salaryDict["Bob"] = 45000
+print("\(salaryDict)")
 
 
 //: [Next](@next)

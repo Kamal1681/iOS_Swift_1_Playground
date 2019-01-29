@@ -29,19 +29,30 @@ for i in 2...5 {
  - Experiment:
  What's the difference between `2...5` vs `2..<5`?
  */
-
+for i in 2..<5 {
+    print("My Current Index: \(i)")
+}
 
 /*:
  - Experiment:
   Use a ranged for loop to search through the 'pets' array above for the word 'pig' and print out its index.
  */
-
+for i in 0..<4 {
+    if pets[i] == "pig" {
+      print(i)
+    }
+    
+}
 
 /*:
  - Experiment:
  Create an array of random numbers of your choosing then make a for loop that adds 1 to each number.
  */
-
+var myArray = [1,2,3,4,5]
+for i in 0..<myArray.count {
+    myArray[i] = myArray[i] + 1
+}
+print(myArray)
 
 /*:
  - Experiment:
@@ -66,15 +77,29 @@ for (_, numbers) in interestingNumbers {
     }
 }
 print(largest)
-
+var smallest = largest
+for (_, numbers) in interestingNumbers {
+    for number in numbers {
+        if number < smallest {
+            smallest = number
+        }
+    }
+}
+print(smallest)
 
 /*:
  - Callout(Challenge):
  Given a number `N`, from 0 to `N`, add up all the odd numbers and print out the result.
  ie: N = 5, 1+3+5 = 9
  */
-
-
+let n: Int = 3
+var x: Int = 0
+for i in 0...n {
+    if i%2 != 0{
+        x = x + i
+    }
+}
+print(x)
 /*:
  - Callout(Challenge):
  Given the following array of numbers, determine the frequency of each number using a for loop.
@@ -90,4 +115,13 @@ print(largest)
 
 let numberArray = [1, 4, 5, 5, 5, 3, 2, 1, 4, 2, 2, 2, 1]
 
+for i in 0..<numberArray.count {
+    var counter: Int = 0
+    for j in 0..<numberArray.count {
+        if numberArray[i] == numberArray[j] {
+            counter = counter + 1
+        }
+    }
+    print("\(numberArray[i]): Occurs \(counter) times")
+}
 //: [Next](@next)

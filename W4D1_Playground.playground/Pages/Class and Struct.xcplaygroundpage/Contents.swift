@@ -10,12 +10,12 @@
 /*:
  Here we declare a class by using the `'class'` keyword and then the name of the class. Within the braces we are free to add properties and new methods for class.
  */
-class ShapeClass {
-    var numberOfSides = 0
-    func description() -> String {
-        return "A shape with \(numberOfSides) sides."
-    }
-}
+//class ShapeClass {
+//    var numberOfSides = 0
+//    func description() -> String {
+//        return "A shape with \(numberOfSides) sides."
+//    }
+//}
 /*:
  The struct version looks the same except we use the keyword `'struct'`.
  */
@@ -30,12 +30,24 @@ struct ShapeStruct {
  - Experiment:
  Update the ShapeClass and add a new property 'name'. Also, update the description method to include the name when it prints.
  */
+class ShapeClass {
+    var numberOfSides = 0
+    var name: String = ""
+    func description() -> String {
+        return "A shape with \(numberOfSides) sides, and called \(name)"
+    }
+}
+
 
 
 /*:
  - Experiment:
  Try creating an instance of the ShapeClass. We can do this by writing the class name then putting parentheses '()' after the class name. Assign it to a declared variable and try setting the variables 'numberofSides' and 'name' and calling the 'description' method.
  */
+var shapeClassInstance = ShapeClass()
+shapeClassInstance.numberOfSides = 4
+shapeClassInstance.name = "square"
+print(shapeClassInstance.description())
 
 
 /*:
@@ -46,12 +58,13 @@ class NamedShapeClass {
     var numberOfSides: Int = 0
     var name: String
     
-    init(name: String) {
+    init(name: String, numberOfSides: Int) {
         self.name = name
+        self.numberOfSides = numberOfSides
     }
     
     func description() -> String {
-        return "A shape with \(numberOfSides) sides."
+        return "A shape with \(numberOfSides) sides and called \(name)"
     }
 }
 
@@ -59,6 +72,8 @@ class NamedShapeClass {
  - Experiment:
  Add another initializer to our 'NamedShapeClass'. Have this initializer take in 'name' and 'numberOfSides' as its parameters. Then test it out by creating an instance of 'NamedShapeClass'.
  */
+var namedShapeClassInstance = NamedShapeClass(name: "rectangle", numberOfSides: 4)
+print (namedShapeClassInstance.description())
 
 
 /*:
@@ -73,8 +88,21 @@ class NamedShapeClass {
 
 class Square : NamedShapeClass {
     
+    var sideLength: Double = 0
+    init(name: String, numberOfSides: Int, sideLength: Double) {
+        super.init(name: name, numberOfSides: numberOfSides)
+        self.sideLength = sideLength
+    }
+    
+    func area(sideLength: Double) -> Double {
+        return sideLength * sideLength
+    }
+    override func description() -> String {
+        return "A shape with \(numberOfSides) sides and called \(name) and its side length equals \(sideLength)"
+    }
 }
-
+var aSquare = Square(name: "oneSquare", numberOfSides: 4, sideLength: 5)
+print(aSquare.description())
 /*:
  - Callout(Challenge):
  Follow the instructions to create your own Car class.
@@ -90,8 +118,25 @@ class Square : NamedShapeClass {
  - Add an instance of Toyota called toyota. Initialize it.
  - Add the drive() method to make sure it prints out "Prius"
  */
+class Car {
+    var model: String
+    init(model: String) {
+        self.model = model
+    }
+    func drive(){
+        print(self.model)
+    }
+}
+class Toyota : Car {
+    init() {
+        super.init(model: "Prius")
+    }
+}
 
-
+var nissan = Car(model: "Rogue")
+nissan.drive()
+var toyota = Toyota()
+toyota.drive()
 
 /*:
  - Callout(Challenge):
@@ -102,27 +147,34 @@ First, create a Person class with a name property and a custom initializer that 
 Now create the same Person class but convert it to a struct. Uncomment 'Section B'. What do think will happen? What are the results?
 */
 // Implement Person class under here!
-
+class Person {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
 
 // Section A
-//var firstPersonObject = Person(name: "Joe")
-//var secondPersonObject = firstPersonObject
-//secondPersonObject.name = "Jane"
+var firstPersonObject = Person(name: "Joe")
+var secondPersonObject = firstPersonObject
+secondPersonObject.name = "Jane"
 //
-//print(firstPersonObject.name)
-//print(secondPersonObject.name)
+print(firstPersonObject.name)
+print(secondPersonObject.name)
 
 
 // Implement Person struct under here!
 
-
+struct Person2 {
+    var name: String
+}
 // Section B
-//var firstPersonStruct = Person(name: "Joe")
-//var secondPersonStruct = firstPersonStruct
-//secondPersonStruct.name = "Jane"
+var firstPersonStruct = Person(name: "Joe")
+var secondPersonStruct = firstPersonStruct
+secondPersonStruct.name = "Jane"
 //
-//print(firstPersonStruct.name)
-//print(secondPersonStruct.name)
+print(firstPersonStruct.name)
+print(secondPersonStruct.name)
 
 
 //: [Next](@next)

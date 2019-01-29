@@ -8,7 +8,10 @@
  */
 protocol ShapeProtocol {
     var numberOfSides: Int { get set }
+    var shapeColor: String { get set }
+    init(shapeColor: String)
     func shapeDescription()
+    func area(sideLength: Int)
 }
 
 /*:
@@ -16,14 +19,18 @@ protocol ShapeProtocol {
  */
 class Square: ShapeProtocol {
     var numberOfSides: Int
-    
-    init(){
+    var shapeColor: String = ""
+    required init(shapeColor: String){
         self.numberOfSides = 4
+        self.shapeColor = shapeColor
     }
     
     func shapeDescription() {
         
         print("This is a square")
+    }
+    func area(sideLength: Int)  {
+        print (sideLength * sideLength)
     }
 }
 
@@ -46,7 +53,28 @@ class Square: ShapeProtocol {
  - Callout(Challenge):
  Define a person protocol with name, gender, age and add a custom initializer to set all the properties and a function to print a description of this person. Create a 'Student' class that conforms to this protocol and print the description of this student using its name.
  */
-
+protocol Person {
+    var name:String {get set}
+    var gender: String {get set}
+    var age: Int {get set}
+    init (name: String, gender: String, age: Int )
+    func description(name: String, gender: String, age: Int)
+    
+}
+class Student {
+    var name:String
+    var gender: String
+    var age: Int
+    init (name: String, gender: String, age: Int ) {
+        self.name = name
+        self.gender = gender
+        self.age = age
+        
+    }
+    func description(name: String, gender: String, age: Int) {
+        print(name, gender, age)
+    }
+}
 /*:
  ## Extensions
  Extensions are a way to add additional functions to an existing class, struct or enum.

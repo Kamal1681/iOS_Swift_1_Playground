@@ -5,6 +5,7 @@
  
     `print("Hello, world!")`
  */
+print ("Hello, world!")
 
 /*:
  ## Variables
@@ -21,6 +22,10 @@ students = 7
  Try creating a variable and/or constant for your name, and age.
  What happens if you try to change the value of a constant?
  */
+let name = "Kamal"
+var age: Int
+age = 37
+
 
 
 //: ---
@@ -42,7 +47,7 @@ students = 7
   What happens if you try to change the value to a `Double` like 4.1?
  */
 
-var weeksCompleted = 4
+var weeksCompleted = "5"
 
 /*:
  As you can see, you don't have to write the type explicitly. Providing a value when you create a constant or variable lets the compiler _infer_ its type. In the example above, the compiler infers that `students` is an integer because its initial value is an integer.
@@ -70,6 +75,7 @@ let explicitDouble: Double = 70
  - Experiment:
  What type are the variables `tipAmount`, and `isOpen`?
  */
+let value: Float = 4.0
 
 var tipAmount = 6.01
 // tipAmount's type is:
@@ -114,6 +120,12 @@ Volume of cylinder = pi * radius^2 * height
 /*:
  Hint: Make sure your radius is of type `Double`
  */
+import Foundation
+var area: Double
+var radius: Double = 10
+let pi = 3.14
+
+area = pi * pow(radius, 2.0)
 
 /*:
  - Callout(Problem 2):
@@ -122,6 +134,7 @@ Volume of cylinder = pi * radius^2 * height
 /*:
  Hint: Radius is half the length of the diameter
  */
+var circumference = pi * radius * 2
 
 /*:
  - Callout(Problem 3):
@@ -131,5 +144,8 @@ Volume of cylinder = pi * radius^2 * height
  Hint: You can double-check your answers yourself or on Google... Google has a really easy input mechanism for all three of these formulas if you just search them up.
  */
 
+radius = 5
+let height: Double = 7
+let volume = pi * pow(radius,2.0) * height
 
 //: [Next](@next)

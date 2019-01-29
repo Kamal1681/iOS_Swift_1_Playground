@@ -23,13 +23,14 @@ namedPersonTuple.age
  - Experiment:
  Try creating your own tuple. Mix in different variable types and try mixing some parameters with names and some without. Does it still work?
  */
-
+var aTuple = ("one", 2, 3.0)
+var anotherTuple = (name: "one", order: 2, value: 3.0)
 
 /*:
  - Experiment:
  Try nesting tuples within one another. Create a tuple and add a tuple as one of its items.
  */
-
+var yetAnotherTuple = ("one", order: 5, aTuple)
 
 /*:
  - Experiment:
@@ -41,7 +42,7 @@ let interestingNumbers = [
     "Fibonacci": [1, 1, 2, 3, 5, 8],
     "Square": [1, 4, 9, 16, 25],
 ]
-for (kind, numbers) in interestingNumbers {
+for (_, numbers) in interestingNumbers {
     
 }
 
@@ -54,6 +55,19 @@ To test: call your new function with eligable true and false, and print the two 
  */
 
 
+func tupleTest (name: String, age: Int, eligable: Bool) -> (String, Int)? {
+    if eligable {
+        return (name, age)
+    } else {
+        return nil
+    }
+}
+
+var call = tupleTest(name: "Bob", age: 30, eligable: false)
+if let x = call {
+    print(x.0)
+    print(x.1)
+}
 /*:
  ## Enums
  Enums are related values defined by the user. An example to think of this are the months within a year. There are only 12 months and when you are programming, you'll need a way to represent this. We could potentially use a String for each month, but that could lead to spelling mistakes. So instead, we can define our own values that makes it obvious to you.
@@ -68,19 +82,43 @@ enum Months: Int{
     case March
     case April
     case May, June, July, August
+    case September, October, November, December
     //...
     
     func abbreviatedStringForm() -> String {
         switch self {
-            default:
-                return ""
+        case .January:
+            return "Jan"
+        case .Feburary:
+            return "Feb"
+        case .March:
+            return "Mar"
+        case .April:
+            return "Apr"
+        case .May:
+            return "May"
+        case .June:
+            return "Jun"
+        case .July:
+            return "Jul"
+        case .August:
+            return "Aug"
+        case .September:
+            return "Sep"
+        case .October:
+            return "Oct"
+        case .November:
+            return "Nov"
+        case .December:
+            return "Dec"
+        
         }
     }
 }
 
 //: Now we can represents the months in our program with easy readiablity and minimal mistakes.
-let januaryMonth = Months.January
-let marchMonth = Months.March
+let januaryMonth = Months.January.rawValue
+let marchMonth = Months.March.rawValue
 
 /*:
  - Experiment:
@@ -94,7 +132,7 @@ Try removing the '= 1' from the Months enum. Now what is different?
  - Experiment:
  Finish the rest of the months for our `Months` enum. Then take a look at `abbreviatedStringForm()` function. Complete this function so that it returns the abbreviated form of the desired month as a String. ie: calling `Months.January.abbreviatedStringForm()` returns "Jan".
  */
-
+let abbreviatedJanuaryMonth = Months.January.abbreviatedStringForm()
 
 /*:
  - Experiment:
